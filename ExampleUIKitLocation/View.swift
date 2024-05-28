@@ -30,6 +30,14 @@ class View: UIView {
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         return button
     }()
+    
+    private lazy var buttonSee: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(.blue, for: .normal)
+        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+        return button
+    }()
 
     init() {
         // Chamamos um método da UIView para inicialização
@@ -42,9 +50,10 @@ class View: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setup(labelText: String, buttonTitle: String) {
+    func setup(labelText: String, buttonTitle: String, buttonSeeTitle: String) {
         label.text = labelText
         button.setTitle(buttonTitle, for: .normal)
+        buttonSee.setTitle(buttonSeeTitle, for: .normal)
     }
     
     // MARK: - Actions
@@ -59,6 +68,8 @@ extension View: ViewCode {
     func addSubviews() {
         addSubview(label)
         addSubview(button)
+        addSubview(buttonSee)
+        
     }
 
     func setupConstraints() {
@@ -67,7 +78,10 @@ extension View: ViewCode {
             label.centerYAnchor.constraint(equalTo: centerYAnchor),
 
             button.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 8),
-            button.centerXAnchor.constraint(equalTo: centerXAnchor)
+            button.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            buttonSee.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 8),
+            buttonSee.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
 

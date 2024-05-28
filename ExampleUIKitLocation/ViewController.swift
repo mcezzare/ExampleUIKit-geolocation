@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     
     
     override func viewDidLoad() {
-        myView.setup(labelText: "Ver minha localizacão", buttonTitle: "Testar")
+        myView.setup(labelText: "Ver minha localizacão", buttonTitle: "Testar", buttonSeeTitle: "Escolher local")
         super.viewDidLoad()
         setupLocation()
     }
@@ -71,7 +71,7 @@ extension ViewController: ViewDelegate {
     func didTapButton() {
         if let longitude = locationManager?.location?.coordinate.longitude, let latitude = locationManager?.location?.coordinate.latitude {
             let positionDescription = "Lat: \(String(describing: latitude)) | Long: \(String(describing: longitude))"
-            myView.setup(labelText: positionDescription, buttonTitle: "Testar novamente")
+            myView.setup(labelText: positionDescription, buttonTitle: "Testar novamente", buttonSeeTitle: "Escolher local")
         }
         
     }
